@@ -60,13 +60,13 @@ with st.form("Angajare", clear_on_submit=False):
         st.subheader('Angajat:')
         col1, col2, col3, col4 = st.columns(4, gap="small")
         ang_nume = col1.text_input('Nume angajat:', key='ang_nume', placeholder='e.g. MIHĂESCU ȘTEFAN')
-        ang_cetatean = col2.text_input('Cetațean:', key='ang_cetatean', placeholder='român')   ##### confirma ca placeholder-ul se transmite mai departe in template
+        ang_cetatean = col2.text_input('Cetațean:', value="român", key='ang_cetatean', placeholder='e.g. român')
         
         col1, col2, col3, col4 = st.columns(4, gap="small")
         ang_data_n = col1.date_input('Data naștere:', datetime.date.today(), key='ang_data_n', help=None, format="DD.MM.YYYY")
         ang_loc_n = col2.text_input('Localitate naștere:', value="", key='ang_loc_n', max_chars=None)
         ang_jud_n = col3.text_input('Județ/sector naștere:', value="", key='ang_jud_n', max_chars=None)
-        ang_tara_n = col4.text_input('Țara naștere:', value="", key='ang_tara_n', placeholder='România', max_chars=None)
+        ang_tara_n = col4.text_input('Țara naștere:', value="România", key='ang_tara_n', placeholder='e.g. România', max_chars=None)
 
         col1, col2, col3, col4, col5, col6, col7 = st.columns([0.25, 0.25, 0.1, 0.1, 0.1, 0.1, 0.1], gap="small")
         loc_dom = col1.text_input('Localitate domiciliu', key='loc_dom', placeholder='e.g. BRAȘOV')
@@ -79,13 +79,16 @@ with st.form("Angajare", clear_on_submit=False):
 
         col1, col2, col3, col4 = st.columns(4, gap="small")
         jud_dom = col1.text_input('Județ/sector domiciliu', key='jud_dom', placeholder='e.g. BRAȘOV')
-        tara_dom = col2.text_input('Țara domiciliu:', value="", key='tara_dom', placeholder='România', max_chars=None)
+        tara_dom = col2.text_input('Țara domiciliu:', value="România", key='tara_dom', placeholder='e.g. România', max_chars=None)
 
         col1, col2, col3, col4, col5, col6, col7 = st.columns([0.12, 0.13, 0.065, 0.18, 0.245, 0.13, 0.13], gap="small")
         ang_cnp = col1.text_input('CNP:', key='ang_cnp', max_chars=13)
         ang_tip_act = col2.selectbox('Tip act identitate:', ("CI", "Pașaport", "Permis de ședere"), key='ang_tip_act', index=0, help=None)
-        ang_serie_act = col3.text_input('Serie:', value="", key='ang_serie_act', placeholder='România', max_chars=None)
-        ang_nr_act = col4.text_input('Nr.:', value="", key='ang_nr_act', placeholder='România', max_chars=None)
-        ang_act_elib = col5.text_input('Eliberat de:', value="", key='ang_act_elib', placeholder='România', max_chars=None)
+        ang_serie_act = col3.text_input('Serie:', value="", key='ang_serie_act', placeholder='', max_chars=None)
+        ang_nr_act = col4.text_input('Nr.:', value="", key='ang_nr_act', placeholder='', max_chars=None)
+        ang_act_elib = col5.text_input('Eliberat de:', value="", key='ang_act_elib', placeholder='e.g. SPCLEP BRAȘOV', max_chars=None)
         ang_data_elib = col6.date_input('Data eliberare:', datetime.date.today(), key='ang_data_elib', help=None, format="DD.MM.YYYY")
         ang_data_exp = col7.date_input('Data expirare:', datetime.date.today(), key='ang_data_exp', help=None, format="DD.MM.YYYY")
+
+
+
