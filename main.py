@@ -90,5 +90,20 @@ with st.form("Angajare", clear_on_submit=False):
         ang_data_elib = col6.date_input('Data eliberare:', datetime.date.today(), key='ang_data_elib', help=None, format="DD.MM.YYYY")
         ang_data_exp = col7.date_input('Data expirare:', datetime.date.today(), key='ang_data_exp', help=None, format="DD.MM.YYYY")
 
+        st.divider()
+
+        st.subheader('Elemente contract de munca:')
+        col1, col2, col3, col4 = st.columns(4, gap="small")
+        ang_functie = col1.text_input('Funcția:', value="", key='ang_functie', placeholder='', max_chars=None)
+        cod_functie = col2.text_input('Cod funcție:', value="", key='cod_functie', placeholder='', max_chars=None)
+        data_incep_activ = col3.date_input('Data începere activitate:', datetime.date.today(), key='data_incep_activ', help=None, format="DD.MM.YYYY")
+        ang_sal_brut = col4.text_input('Salariu brut:', value="", key='ang_sal_brut', placeholder='', max_chars=None)
+        
+        col1, col2, col3, col4 = st.columns(4, gap="small")
+        nr_h_zi = col1.text_input('Nr. ore pe zi:', value="", key='nr_h_zi', placeholder='', max_chars=None)
+        nr_h_sapt = col2.text_input('Nr. ore pe săptamnână:', value="", key='nr_h_sapt', placeholder='', max_chars=None)
+        data_semn_cim = col3.date_input('Data semnării CIM:', datetime.date.today(), key='data_semn_cim', help=None, format="DD.MM.YYYY")
+        nr_cim = col4.text_input('Nr. CIM:', value="", key='nr_cim', placeholder='', max_chars=None)
+
 
 
