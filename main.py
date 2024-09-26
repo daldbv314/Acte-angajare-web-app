@@ -15,7 +15,7 @@ st.set_page_config(
     page_title='Angajare', 
     layout='wide',
 )
-st.title('Creează actele pentru angajare:')
+st.title('Creează actele pentru angajare (SRL | perioadă nedeterminată):')
 
 #--- HIDE STREAMLIT STYLE ---
 #hide_st_style = """
@@ -27,11 +27,70 @@ st.title('Creează actele pentru angajare:')
 #            """
 #st.markdown(hide_st_style, unsafe_allow_html=True)
 
+def var_dictionary():
+    var_dict = {
+        'nr_oferta': nr_oferta,
+        'data_oferta': data_oferta,
+
+        'companie': companie,
+        'cui': cui,
+        'nr_inreg': nr_inreg,
+        'loc_sed': loc_sed,
+        'str_sed': str_sed,
+        'nr_sed': nr_sed,
+        'bl_sed': bl_sed,
+        'sc_sed': sc_sed,
+        'et_sed': et_sed,
+        'ap_sed': ap_sed,
+        'cam_sed': cam_sed,
+        'jud_sed': jud_sed,
+        'tara_sed': tara_sed,
+        'adm_nume': adm_nume,
+
+        'ang_nume': ang_nume,
+        'ang_cetatean': ang_cetatean,
+        'ang_data_n': ang_data_n,
+        'ang_loc_n': ang_loc_n,
+        'ang_jud_n': ang_jud_n,
+        'ang_tara_n': ang_tara_n,
+        'loc_dom': loc_dom,
+        'str_dom': str_dom,
+        'nr_dom': nr_dom,
+        'bl_dom': bl_dom,
+        'sc_dom': sc_dom,
+        'et_dom': et_dom,
+        'ap_dom': ap_dom,
+        'jud_dom': jud_dom,
+        'tara_dom': tara_dom,
+
+        'ang_cnp': ang_cnp,
+        'ang_tip_act': ang_tip_act,
+        'ang_serie_act': ang_serie_act,
+        'ang_nr_act': ang_nr_act,
+        'ang_act_elib_d': ang_act_elib_d,
+        'ang_data_elib': ang_data_elib,
+        'ang_data_exp': ang_data_exp,
+
+        'ang_functie': ang_functie,
+        'cod_functie': cod_functie,
+        'data_incep_activ': data_incep_activ,
+        'ang_sal_brut': ang_sal_brut,
+        'nr_h_zi': nr_h_zi,
+        'nr_h_sapt': nr_h_sapt,
+        'data_semn_cim': data_semn_cim,
+        'nr_cim': nr_cim
+
+    }
+    return var_dict
+
+
+
+
 with st.form("Angajare", clear_on_submit=False):
 
         col1, col2 = st.columns(2, gap="small")
-        nr_oferta = col1.text_input('Nr. oferta:', value="", key='nr_oferta', placeholder='e.g. 21', max_chars=None)
-        data_oferta = col2.date_input('Data oferta:', datetime.date.today(), key='data_oferta', help=None, format="DD.MM.YYYY")
+        nr_oferta = col1.text_input('Nr. ofertă:', value="", key='nr_oferta', placeholder='e.g. 21', max_chars=None)
+        data_oferta = col2.date_input('Data ofertă:', datetime.date.today(), key='data_oferta', help=None, format="DD.MM.YYYY")
 
         st.divider()
 
@@ -53,7 +112,8 @@ with st.form("Angajare", clear_on_submit=False):
 
         col1, col2, col3, col4 = st.columns(4, gap="small")
         jud_sed = col1.text_input('Județ', key='jud_sed', placeholder='e.g. BRAȘOV')
-        reprez = col2.text_input('Reprezentant legal', key='reprez', placeholder='e.g. POPESCU ANDREI')
+        tara_sed = col2.text_input('Țara sediu:', value="România", key='tara_sed', placeholder='e.g. România', max_chars=None)
+        adm_nume = col3.text_input('Reprezentant legal', key='adm_nume', placeholder='e.g. POPESCU ANDREI')
 
         st.divider()
 
@@ -86,13 +146,13 @@ with st.form("Angajare", clear_on_submit=False):
         ang_tip_act = col2.selectbox('Tip act identitate:', ("CI", "Pașaport", "Permis de ședere"), key='ang_tip_act', index=0, help=None)
         ang_serie_act = col3.text_input('Serie:', value="", key='ang_serie_act', placeholder='', max_chars=None)
         ang_nr_act = col4.text_input('Nr.:', value="", key='ang_nr_act', placeholder='', max_chars=None)
-        ang_act_elib = col5.text_input('Eliberat de:', value="", key='ang_act_elib', placeholder='e.g. SPCLEP BRAȘOV', max_chars=None)
+        ang_act_elib_d = col5.text_input('Eliberat de:', value="", key='ang_act_elib_d', placeholder='e.g. SPCLEP BRAȘOV', max_chars=None)
         ang_data_elib = col6.date_input('Data eliberare:', datetime.date.today(), key='ang_data_elib', help=None, format="DD.MM.YYYY")
         ang_data_exp = col7.date_input('Data expirare:', datetime.date.today(), key='ang_data_exp', help=None, format="DD.MM.YYYY")
 
         st.divider()
 
-        st.subheader('Elemente contract de munca:')
+        st.subheader('Elemente contract de muncă:')
         col1, col2, col3, col4 = st.columns(4, gap="small")
         ang_functie = col1.text_input('Funcția:', value="", key='ang_functie', placeholder='', max_chars=None)
         cod_functie = col2.text_input('Cod funcție:', value="", key='cod_functie', placeholder='', max_chars=None)
@@ -105,5 +165,9 @@ with st.form("Angajare", clear_on_submit=False):
         data_semn_cim = col3.date_input('Data semnării CIM:', datetime.date.today(), key='data_semn_cim', help=None, format="DD.MM.YYYY")
         nr_cim = col4.text_input('Nr. CIM:', value="", key='nr_cim', placeholder='', max_chars=None)
 
+        st.divider()
+
+        st.write(' ')
+        submitted = st.form_submit_button("Pas 1: Crează documentele", type="primary")
 
 
