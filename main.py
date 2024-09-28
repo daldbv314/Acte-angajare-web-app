@@ -84,6 +84,84 @@ def var_dictionary():
     return var_dict
 
 
+def doc01():
+    doc01_path = Path.cwd() / "Templates" / "01-acord-confidentialitate.docx"
+    doc01_doc = DocxTemplate(doc01_path)
+    context = var_dictionary()
+    doc01_doc.render(context)
+    doc01_bytes = BytesIO()
+    doc01_doc.save(doc01_bytes)
+    return doc01_bytes.getvalue()
+
+
+def doc02():
+    doc02_path = Path.cwd() / "Templates" / "02-acord-GDPR.docx"
+    doc02_doc = DocxTemplate(doc02_path)
+    context = var_dictionary()
+    doc02_doc.render(context)
+    doc02_bytes = BytesIO()
+    doc02_doc.save(doc02_bytes)
+    return doc02_bytes.getvalue()
+
+
+def doc03():
+    doc03_path = Path.cwd() / "Templates" / "03-cim.docx"
+    doc03_doc = DocxTemplate(doc03_path)
+    context = var_dictionary()
+    doc03_doc.render(context)
+    doc03_bytes = BytesIO()
+    doc03_doc.save(doc03_bytes)
+    return doc03_bytes.getvalue()
+
+
+def doc04():
+    doc04_path = Path.cwd() / "Templates" / "04-declaratie-de-sanatate.docx"
+    doc04_doc = DocxTemplate(doc04_path)
+    context = var_dictionary()
+    doc04_doc.render(context)
+    doc04_bytes = BytesIO()
+    doc04_doc.save(doc04_bytes)
+    return doc04_bytes.getvalue()
+
+
+def doc05():
+    doc05_path = Path.cwd() / "Templates" / "05-declaratie-propria-raspundere-functia-de-baza.docx"
+    doc05_doc = DocxTemplate(doc05_path)
+    context = var_dictionary()
+    doc05_doc.render(context)
+    doc05_bytes = BytesIO()
+    doc05_doc.save(doc05_bytes)
+    return doc05_bytes.getvalue()
+
+
+def doc06():
+    doc06_path = Path.cwd() / "Templates" / "06-fisa-postului-Programator-de-sistem-informatic.docx"
+    doc06_doc = DocxTemplate(doc06_path)
+    context = var_dictionary()
+    doc06_doc.render(context)
+    doc06_bytes = BytesIO()
+    doc06_doc.save(doc06_bytes)
+    return doc06_bytes.getvalue()
+
+
+def doc07():
+    doc07_path = Path.cwd() / "Templates" / "07-imputernicire-schimbare-parola-itm.docx"
+    doc07_doc = DocxTemplate(doc07_path)
+    context = var_dictionary()
+    doc07_doc.render(context)
+    doc07_bytes = BytesIO()
+    doc07_doc.save(doc07_bytes)
+    return doc07_bytes.getvalue()
+
+
+def doc08():
+    doc08_path = Path.cwd() / "Templates" / "08-oferta-de-angajare.docx"
+    doc08_doc = DocxTemplate(doc08_path)
+    context = var_dictionary()
+    doc08_doc.render(context)
+    doc08_bytes = BytesIO()
+    doc08_doc.save(doc08_bytes)
+    return doc08_bytes.getvalue()
 
 
 with st.form("Angajare", clear_on_submit=False):
