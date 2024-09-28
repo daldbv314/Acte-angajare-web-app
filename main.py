@@ -164,6 +164,33 @@ def doc08():
     return doc08_bytes.getvalue()
 
 
+def create_zip_archive():
+    # Generate the content for each document
+    doc01_content = doc01()
+    doc02_content = doc02()
+    doc03_content = doc03()
+    doc04_content = doc04()
+    doc05_content = doc05()
+    doc06_content = doc06()
+    doc07_content = doc07()
+    doc08_content = doc08()
+
+    # Create an in-memory zip file
+    with io.BytesIO() as zip_buffer:
+        with ZipFile(zip_buffer, 'w') as zipf:
+            # Add each doc to the archive
+            zipf.writestr(f"{companie}-01-acord-confidentialitate.docx", doc01_content)
+            zipf.writestr(f"{companie}-02-acord-GDPR.docx", doc02_content)
+            zipf.writestr(f"{companie}-03-cim.docx", doc03_content)
+            zipf.writestr(f"{companie}-04-declaratie-de-sanatate.docx", doc04_content)
+            zipf.writestr(f"{companie}-05-declaratie-propria-raspundere-functia-de-baza.docx", doc05_content)
+            zipf.writestr(f"{companie}-06-fisa-postului-Programator-de-sistem-informatic.docx", doc06_content)
+            zipf.writestr(f"{companie}-07-imputernicire-schimbare-parola-itm.docx", doc07_content)
+            zipf.writestr(f"{companie}-08-oferta-de-angajare.docx", doc08_content)
+        # Get the zip archive content as bytes
+        zip_bytes = zip_buffer.getvalue()
+    return zip_bytes
+
 with st.form("Angajare", clear_on_submit=False):
 
         col1, col2 = st.columns(2, gap="small")
@@ -249,3 +276,8 @@ with st.form("Angajare", clear_on_submit=False):
         submitted = st.form_submit_button("Pas 1: Crează documentele", type="primary")
 
 
+if submitted:
+    with st.spinner("Se generează documentele..."):
+        zip_archive = create_zip_archive()
+    st.success("Succes! Documentele pot fi descărcate acum de mai jos!")
+    st.download_button(label="Pas 2: Downloadează", data=zip_archive, file_name=f"{companie}-acte-angajare-{datetime.date.today()}.zip", mime="docx", type="primary")
