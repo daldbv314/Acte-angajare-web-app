@@ -17,7 +17,7 @@ def main():
         page_title='Angajare', 
         layout='wide',
     )
-    st.title('Creează actele pentru angajare (SRL | perioadă nedeterminată):')
+    st.title('Acte angajare (SRL | perioadă nedeterminată):')
 
     #--- HIDE STREAMLIT STYLE ---
     hide_st_style = """
@@ -288,7 +288,7 @@ def main():
         with st.spinner("Se generează documentele..."):
             zip_archive = create_zip_archive()
         st.success("Succes! Documentele pot fi descărcate acum de mai jos!")
-        st.download_button(label="Pas 2: Downloadează", data=zip_archive, file_name=f"{companie}-acte-angajare-{datetime.date.today()}.zip", mime="docx", type="primary")
+        st.download_button(label="Pas 2: Download", data=zip_archive, file_name=f"{companie}-acte-angajare-{datetime.date.today()}.zip", mime="docx", type="primary")
 
 if __name__ == "__main__":
     main()
